@@ -172,5 +172,16 @@
         "display": true
       }
     }
+  },
+  "BrucellaVaccineSchema": {
+    "folder": "VaxLLM",
+    "id": "https://example.com/BrucellaVaccineSchema",
+    "version": "1.0.0",
+    "templates": {
+      "BrucellaVaccineSchema": {
+        "name": "BrucellaVaccineSchema",
+        "display": true
+      }
+    }
   }
 }
