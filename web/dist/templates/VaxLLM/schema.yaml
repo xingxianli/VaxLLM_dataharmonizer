@@ -1,0 +1,215 @@
+id: https://example.com/BrucellaVaccineSchema
+name: BrucellaVaccineSchema
+description: "Schema for Brucella vaccine classification and annotation results"
+imports:
+  - "linkml:types"
+
+prefixes:
+  linkml: "https://w3id.org/linkml/"
+  VAX: "https://example.com/BrucellaVaccineSchema#"
+
+classes:
+  dh_interface:
+    name: dh_interface
+    description: "A DataHarmonizer interface"
+    from_schema: https://example.com/BrucellaVaccineSchema
+
+  BrucellaVaccineSchema:
+    name: BrucellaVaccineSchema
+    description: "Template for Brucella vaccine classification and annotation results"
+    is_a: dh_interface
+    slots:
+      - PMID
+      - Title
+      - Authors
+      - DOI
+      - Classification
+      - Vaccine Name
+      - Vaccine Name Mapping
+      - Vaccine Introduction
+      - Vaccine Type
+      - Vaccine Type Mapping
+      - Vaccine Antigen
+      - Vaccine Antigen Mapping
+      - Vaccine Formulation
+      - Host Species Used as Laboratory Animal Model
+      - Experiment Used to investigate the vaccine
+      - Species
+      - Disease
+      - Gene
+    slot_usage:
+      PMID:
+        description: "PubMed ID of the article"
+      Title:
+        description: "Title of the article"
+      Authors:
+        description: "Authors of the article"
+      DOI:
+        description: "Digital Object Identifier (DOI)"
+      Classification:
+        description: "Classification of the article (Yes/No). This classification is based on the presence of information of vaccine development in the article."
+      Vaccine Name:
+        description: "Name of the vaccine"
+      Vaccine Name Mapping:
+        description: "Mapped Vaccine Ontology (VO) ID for Vaccine Name"
+      Vaccine Introduction:
+        description: "Brief introduction of the vaccine"
+      Vaccine Type:
+        description: "Type of vaccine, vaccine platform"
+      Vaccine Type Mapping:
+        description: "Mapped Vaccine Ontology (VO) ID for Vaccine Type"
+      Vaccine Antigen:
+        description: "Antigen used in the vaccine"
+      Vaccine Antigen Mapping:
+        description: "Mapped Vaccine Ontology (VO) ID for Vaccine Antigen"
+      Vaccine Formulation:
+        description: "Formulation details of the vaccine, including adjuvants, proteins, etc."
+      Host Species Used as Laboratory Animal Model:
+        description: "Host species used in vaccine trials"
+      Experiment Used to investigate the vaccine:
+        description: "Experimental methods used for vaccine investigation"
+      Species:
+        description: "Species annotated by PubTator"
+      Disease:
+        description: "Disease identified in the study"
+      Gene:
+        description: "Gene with ID if available"
+
+slots:
+  PMID:
+    description: "PubMed ID of the article"
+    required: true
+    range: string
+    slot_group: "Article Metadata"
+
+  Title:
+    description: "Title of the article"
+    required: true
+    range: string
+    slot_group: "Article Metadata"
+
+  Authors:
+    description: "Authors of the article"
+    range: string
+    slot_group: "Article Metadata"
+
+  DOI:
+    description: "Digital Object Identifier (DOI)"
+    range: string
+    slot_group: "Article Metadata"
+
+  Classification:
+    description: "Classification of the article (Yes/No). This classification is based on the presence of information of vaccine development in the article."
+    required: true
+    range: ClassificationEnum
+    slot_group: "Article Metadata"
+
+  Vaccine Name:
+    description: "Name of the vaccine"
+    range: string
+    slot_group: "Vaccine Information"
+
+  Vaccine Name Mapping:
+    description: "Mapped Vaccine Ontology (VO) ID for Vaccine Name"
+    range: string
+    slot_group: "Vaccine Information"
+    slot_uri: "VO:0001234"  # Example Vaccine Ontology term
+    exact_mappings:
+      - "VO:0001234"
+      - "VO:0005678"
+
+  Vaccine Introduction:
+    description: "Brief introduction of the vaccine"
+    range: string
+    slot_group: "Vaccine Information"
+
+  Vaccine Type:
+    description: "Type of vaccine, also known as vaccine platform"
+    range: VaccineTypeEnum
+    slot_group: "Vaccine Information"
+
+  Vaccine Type Mapping:
+    description: "Mapped Vaccine Ontology (VO) ID for Vaccine Type"
+    range: string
+    slot_group: "Vaccine Information"
+    slot_uri: "http://purl.obolibrary.org/obo/VO_0000367"  # Example Vaccine Ontology term
+    exact_mappings:
+      - "VO:0000367"
+      - "VO:0008765"
+
+  Vaccine Antigen:
+    description: "Antigen used in the vaccine"
+    range: string
+    slot_group: "Vaccine Information"
+
+
+  Vaccine Antigen Mapping:
+    description: "Mapped Vaccine Ontology (VO) ID for Vaccine Antigen"
+    range: string
+    slot_group: "Vaccine Information"
+    slot_uri: "VO:0005678"  # Example Vaccine Ontology term
+    exact_mappings:
+      - "VO:0005678"
+      - "VO:0004321"
+
+  Vaccine Formulation:
+    description: "Formulation details of the vaccine, including adjuvants, proteins, etc."
+    range: string
+    slot_group: "Vaccine Information"
+
+  Host Species Used as Laboratory Animal Model:
+    description: "Host species used in vaccine trials"
+    range: string
+    slot_group: "Experiment Information"
+
+  Experiment Used to investigate the vaccine:
+    description: "Experimental methods used for vaccine investigation"
+    range: string
+    slot_group: "Experiment Information"
+
+  Species:
+    description: "Species annotated by PubTator"
+    range: string
+    slot_group: "Annotation Data"
+
+  Disease:
+    description: "Disease identified in the study"
+    range: string
+    slot_group: "Annotation Data"
+
+  Gene:
+    description: "Gene with ID if available"
+    range: string
+    slot_group: "Annotation Data"
+
+
+enums:
+  ClassificationEnum:
+    name: ClassificationEnum
+    permissible_values:
+      yes:
+        meaning: "GENEPIO:000001"  # Optional, remove if not needed
+      no:
+        meaning: "GENEPIO:000002"  # Optional, remove if not needed
+
+  VaccineTypeEnum:
+    name: VaccineTypeEnum
+    permissible_values:
+      mRNA vaccine: {}
+      Subunit vaccine: {}
+      Live attenuated vaccine: 
+        text: Live attenuated vaccine
+        meaning: VO_0000367
+      Inactivated vaccine: 
+        text: Inactivated vaccine
+        meaning: VO_0000315
+      Recombinant vaccine: {}
+      Other: {}
+
+types:
+  WhitespaceMinimizedString:
+    name: "WhitespaceMinimizedString"
+    typeof: string
+    description: "A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces."
+    base: str
+    uri: xsd:token
