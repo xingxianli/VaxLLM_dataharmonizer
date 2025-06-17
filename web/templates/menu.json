@@ -1,4 +1,15 @@
-{
+{ 
+   "BrucellaVaccineSchema": {
+    "folder": "VaxLLM",
+    "id": "https://example.com/BrucellaVaccineSchema",
+    "version": "1.0.0",
+    "templates": {
+      "BrucellaVaccineSchema": {
+        "name": "BrucellaVaccineSchema",
+        "display": true
+      }
+    }
+  },
   "CanCOGeN_Covid-19": {
     "folder": "canada_covid19",
     "id": "https://example.com/CanCOGeN_Covid-19",
@@ -169,17 +180,6 @@
     "templates": {
       "B2B2B": {
         "name": "B2B2B",
-        "display": true
-      }
-    }
-  },
-  "BrucellaVaccineSchema": {
-    "folder": "VaxLLM",
-    "id": "https://example.com/BrucellaVaccineSchema",
-    "version": "1.0.0",
-    "templates": {
-      "BrucellaVaccineSchema": {
-        "name": "BrucellaVaccineSchema",
         "display": true
       }
     }

@@ -36,7 +36,21 @@ classes:
       - Experiment Used to investigate the vaccine
       - Species
       - Disease
-      - Gene
+      - Gene1
+      - Gene type
+      - Mapped GeneID1
+      - Gene2
+      - Gene type
+      - Mapped GeneID2
+      - Gene3
+      - Gene type
+      - Mapped GeneID3
+      - Gene4
+      - Gene type
+      - Mapped GeneID4
+      - Gene5
+      - Gene type
+      - Mapped GeneID5
     slot_usage:
       PMID:
         description: "PubMed ID of the article"
@@ -177,10 +191,13 @@ slots:
     range: string
     slot_group: "Annotation Data"
 
-  Gene:
+  Gene1:
     description: "Gene with ID if available"
     range: string
     slot_group: "Annotation Data"
+  
+  
+  
 
 
 enums:

@@ -287,39 +287,41 @@
     }
   },
   "enums": {
-    "ClassificationEnum": {
-      "name": "ClassificationEnum",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "permissible_values": {
-        "True": {
-          "text": "True",
-          "meaning": "GENEPIO:000001"
-        },
-        "False": {
-          "text": "False",
-          "meaning": "GENEPIO:000002"
-        }
-      }
-    },
     "VaccineTypeEnum": {
       "name": "VaccineTypeEnum",
       "from_schema": "https://example.com/BrucellaVaccineSchema",
       "permissible_values": {
-        "mRNA vaccine": {
-          "text": "mRNA vaccine"
+        "RNA vaccine": {
+          "text": "RNA vaccine",
+          "meaning": "VO_0000186"
         },
-        "Subunit vaccine": {
-          "text": "Subunit vaccine"
+        "DNA vaccine": {
+          "text": "DNA vaccine",
+          "meaning": "VO_0000032"
         },
-        "Live attenuated vaccine": {
-          "text": "Live attenuated vaccine",
+        "subunit vaccine": {
+          "text": "subunit vaccine",
+          "meaning": "VO_0000534"
+        },
+        "live attenuated vaccine": {
+          "text": "live attenuated vaccine",
           "meaning": "VO_0000367"
         },
-        "Inactivated vaccine": {
-          "text": "Inactivated vaccine"
+        "inactivated vaccine": {
+          "text": "inactivated vaccine",
+          "meaning": "VO_0000315"
         },
-        "Recombinant vaccine": {
-          "text": "Recombinant vaccine"
+        "recombinant vector vaccine": {
+          "text": "recombinant vector vaccine",
+          "meaning": "VO_0000484"
+        },
+        "virus-like particle vaccine": {
+          "text": "virus-like particle vaccine",
+          "meaning": "VO_0004914"
+        },
+        "toxoid vaccine": {
+          "text": "toxoid vaccine",
+          "meaning": "VO_0000561"
         },
         "Other": {
           "text": "Other"
@@ -350,6 +352,17 @@
       "range": "string",
       "required": true
     },
+    "Year": {
+      "name": "Year",
+      "description": "Publication year of the article",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Article Metadata",
+      "range": "string",
+      "required": true
+    },
     "Authors": {
       "name": "Authors",
       "description": "Authors of the article",
@@ -360,46 +373,10 @@
       "slot_group": "Article Metadata",
       "range": "string"
     },
-    "DOI": {
-      "name": "DOI",
-      "description": "Digital Object Identifier (DOI)",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "domain_of": [
-        "BrucellaVaccineSchema"
-      ],
-      "slot_group": "Article Metadata",
-      "range": "string"
-    },
-    "Classification": {
-      "name": "Classification",
-      "description": "Classification of the article (Yes/No). This classification is based on the presence of information of vaccine development in the article.",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "domain_of": [
-        "BrucellaVaccineSchema"
-      ],
-      "slot_group": "Article Metadata",
-      "range": "ClassificationEnum",
-      "required": true
-    },
     "Vaccine Name": {
       "name": "Vaccine Name",
       "description": "Name of the vaccine",
       "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "domain_of": [
-        "BrucellaVaccineSchema"
-      ],
-      "slot_group": "Vaccine Information",
-      "range": "string"
-    },
-    "Vaccine Name Mapping": {
-      "name": "Vaccine Name Mapping",
-      "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Name",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "exact_mappings": [
-        "VO:0001234",
-        "VO:0005678"
-      ],
-      "slot_uri": "VO:0001234",
       "domain_of": [
         "BrucellaVaccineSchema"
       ],
@@ -426,40 +403,10 @@
       "slot_group": "Vaccine Information",
       "range": "VaccineTypeEnum"
     },
-    "Vaccine Type Mapping": {
-      "name": "Vaccine Type Mapping",
-      "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Type",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "exact_mappings": [
-        "VO:0000367",
-        "VO:0008765"
-      ],
-      "slot_uri": "http://purl.obolibrary.org/obo/VO_0000367",
-      "domain_of": [
-        "BrucellaVaccineSchema"
-      ],
-      "slot_group": "Vaccine Information",
-      "range": "string"
-    },
     "Vaccine Antigen": {
       "name": "Vaccine Antigen",
       "description": "Antigen used in the vaccine",
       "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "domain_of": [
-        "BrucellaVaccineSchema"
-      ],
-      "slot_group": "Vaccine Information",
-      "range": "string"
-    },
-    "Vaccine Antigen Mapping": {
-      "name": "Vaccine Antigen Mapping",
-      "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Antigen",
-      "from_schema": "https://example.com/BrucellaVaccineSchema",
-      "exact_mappings": [
-        "VO:0005678",
-        "VO:0004321"
-      ],
-      "slot_uri": "VO:0005678",
       "domain_of": [
         "BrucellaVaccineSchema"
       ],
@@ -496,6 +443,46 @@
       "slot_group": "Experiment Information",
       "range": "string"
     },
+    "Vaccine Protocol": {
+      "name": "Vaccine Protocol",
+      "description": "Protocol details for the vaccine",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Experiment Information",
+      "range": "string"
+    },
+    "Results": {
+      "name": "Results",
+      "description": "Results of the vaccine study",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Experiment Information",
+      "range": "string"
+    },
+    "Immune Response": {
+      "name": "Immune Response",
+      "description": "Immune response observed in the study",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Experiment Information",
+      "range": "string"
+    },
+    "Efficacy": {
+      "name": "Efficacy",
+      "description": "Efficacy of the vaccine after challenge protocol",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Experiment Information",
+      "range": "string"
+    },
     "Species": {
       "name": "Species",
       "description": "Species annotated by PubTator",
@@ -516,9 +503,106 @@
       "slot_group": "Annotation Data",
       "range": "string"
     },
-    "Gene": {
-      "name": "Gene",
+    "Gene1": {
+      "name": "Gene1",
       "description": "Gene with ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Gene type": {
+      "name": "Gene type",
+      "description": "Type of gene",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Mapped GeneID1": {
+      "name": "Mapped GeneID1",
+      "description": "Mapped Gene ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Gene2": {
+      "name": "Gene2",
+      "description": "Gene with ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Mapped GeneID2": {
+      "name": "Mapped GeneID2",
+      "description": "Mapped Gene ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Gene3": {
+      "name": "Gene3",
+      "description": "Gene with ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Mapped GeneID3": {
+      "name": "Mapped GeneID3",
+      "description": "Mapped Gene ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Gene4": {
+      "name": "Gene4",
+      "description": "Gene with ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Mapped GeneID4": {
+      "name": "Mapped GeneID4",
+      "description": "Mapped Gene ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Gene5": {
+      "name": "Gene5",
+      "description": "Gene with ID if available",
+      "from_schema": "https://example.com/BrucellaVaccineSchema",
+      "domain_of": [
+        "BrucellaVaccineSchema"
+      ],
+      "slot_group": "Annotation Data",
+      "range": "string"
+    },
+    "Mapped GeneID5": {
+      "name": "Mapped GeneID5",
+      "description": "Mapped Gene ID if available",
       "from_schema": "https://example.com/BrucellaVaccineSchema",
       "domain_of": [
         "BrucellaVaccineSchema"
@@ -547,25 +631,17 @@
           "name": "Title",
           "description": "Title of the article"
         },
+        "Year": {
+          "name": "Year",
+          "description": "Publication year of the article"
+        },
         "Authors": {
           "name": "Authors",
           "description": "Authors of the article"
         },
-        "DOI": {
-          "name": "DOI",
-          "description": "Digital Object Identifier (DOI)"
-        },
-        "Classification": {
-          "name": "Classification",
-          "description": "Classification of the article (Yes/No). This classification is based on the presence of information of vaccine development in the article."
-        },
         "Vaccine Name": {
           "name": "Vaccine Name",
           "description": "Name of the vaccine"
-        },
-        "Vaccine Name Mapping": {
-          "name": "Vaccine Name Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Name"
         },
         "Vaccine Introduction": {
           "name": "Vaccine Introduction",
@@ -575,17 +651,9 @@
           "name": "Vaccine Type",
           "description": "Type of vaccine, vaccine platform"
         },
-        "Vaccine Type Mapping": {
-          "name": "Vaccine Type Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Type"
-        },
         "Vaccine Antigen": {
           "name": "Vaccine Antigen",
           "description": "Antigen used in the vaccine"
-        },
-        "Vaccine Antigen Mapping": {
-          "name": "Vaccine Antigen Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Antigen"
         },
         "Vaccine Formulation": {
           "name": "Vaccine Formulation",
@@ -599,6 +667,22 @@
           "name": "Experiment Used to investigate the vaccine",
           "description": "Experimental methods used for vaccine investigation"
         },
+        "Vaccine Protocol": {
+          "name": "Vaccine Protocol",
+          "description": "Protocol details for the vaccine"
+        },
+        "Results": {
+          "name": "Results",
+          "description": "Results of the vaccine study"
+        },
+        "Immune Response": {
+          "name": "Immune Response",
+          "description": "Immune response observed in the study"
+        },
+        "Efficacy": {
+          "name": "Efficacy",
+          "description": "Efficacy of the vaccine after challenge protocol"
+        },
         "Species": {
           "name": "Species",
           "description": "Species annotated by PubTator"
@@ -607,9 +691,45 @@
           "name": "Disease",
           "description": "Disease identified in the study"
         },
-        "Gene": {
-          "name": "Gene",
+        "Gene1": {
+          "name": "Gene1",
           "description": "Gene with ID if available"
+        },
+        "Mapped GeneID1": {
+          "name": "Mapped GeneID1",
+          "description": "Mapped Gene ID if available"
+        },
+        "Gene2": {
+          "name": "Gene2",
+          "description": "Gene with ID if available"
+        },
+        "Mapped GeneID2": {
+          "name": "Mapped GeneID2",
+          "description": "Mapped Gene ID if available"
+        },
+        "Gene3": {
+          "name": "Gene3",
+          "description": "Gene with ID if available"
+        },
+        "Mapped GeneID3": {
+          "name": "Mapped GeneID3",
+          "description": "Mapped Gene ID if available"
+        },
+        "Gene4": {
+          "name": "Gene4",
+          "description": "Gene with ID if available"
+        },
+        "Mapped GeneID4": {
+          "name": "Mapped GeneID4",
+          "description": "Mapped Gene ID if available"
+        },
+        "Gene5": {
+          "name": "Gene5",
+          "description": "Gene with ID if available"
+        },
+        "Mapped GeneID5": {
+          "name": "Mapped GeneID5",
+          "description": "Mapped Gene ID if available"
         }
       },
       "attributes": {
@@ -639,6 +759,19 @@
           "range": "string",
           "required": true
         },
+        "Year": {
+          "name": "Year",
+          "description": "Publication year of the article",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Year",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Article Metadata",
+          "range": "string",
+          "required": true
+        },
         "Authors": {
           "name": "Authors",
           "description": "Authors of the article",
@@ -651,53 +784,11 @@
           "slot_group": "Article Metadata",
           "range": "string"
         },
-        "DOI": {
-          "name": "DOI",
-          "description": "Digital Object Identifier (DOI)",
-          "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "alias": "DOI",
-          "owner": "BrucellaVaccineSchema",
-          "domain_of": [
-            "BrucellaVaccineSchema"
-          ],
-          "slot_group": "Article Metadata",
-          "range": "string"
-        },
-        "Classification": {
-          "name": "Classification",
-          "description": "Classification of the article (Yes/No). This classification is based on the presence of information of vaccine development in the article.",
-          "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "alias": "Classification",
-          "owner": "BrucellaVaccineSchema",
-          "domain_of": [
-            "BrucellaVaccineSchema"
-          ],
-          "slot_group": "Article Metadata",
-          "range": "ClassificationEnum",
-          "required": true
-        },
         "Vaccine Name": {
           "name": "Vaccine Name",
           "description": "Name of the vaccine",
           "from_schema": "https://example.com/BrucellaVaccineSchema",
           "alias": "Vaccine_Name",
-          "owner": "BrucellaVaccineSchema",
-          "domain_of": [
-            "BrucellaVaccineSchema"
-          ],
-          "slot_group": "Vaccine Information",
-          "range": "string"
-        },
-        "Vaccine Name Mapping": {
-          "name": "Vaccine Name Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Name",
-          "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "exact_mappings": [
-            "VO:0001234",
-            "VO:0005678"
-          ],
-          "slot_uri": "VO:0001234",
-          "alias": "Vaccine_Name_Mapping",
           "owner": "BrucellaVaccineSchema",
           "domain_of": [
             "BrucellaVaccineSchema"
@@ -729,45 +820,11 @@
           "slot_group": "Vaccine Information",
           "range": "VaccineTypeEnum"
         },
-        "Vaccine Type Mapping": {
-          "name": "Vaccine Type Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Type",
-          "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "exact_mappings": [
-            "VO:0000367",
-            "VO:0008765"
-          ],
-          "slot_uri": "http://purl.obolibrary.org/obo/VO_0000367",
-          "alias": "Vaccine_Type_Mapping",
-          "owner": "BrucellaVaccineSchema",
-          "domain_of": [
-            "BrucellaVaccineSchema"
-          ],
-          "slot_group": "Vaccine Information",
-          "range": "string"
-        },
         "Vaccine Antigen": {
           "name": "Vaccine Antigen",
           "description": "Antigen used in the vaccine",
           "from_schema": "https://example.com/BrucellaVaccineSchema",
           "alias": "Vaccine_Antigen",
-          "owner": "BrucellaVaccineSchema",
-          "domain_of": [
-            "BrucellaVaccineSchema"
-          ],
-          "slot_group": "Vaccine Information",
-          "range": "string"
-        },
-        "Vaccine Antigen Mapping": {
-          "name": "Vaccine Antigen Mapping",
-          "description": "Mapped Vaccine Ontology (VO) ID for Vaccine Antigen",
-          "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "exact_mappings": [
-            "VO:0005678",
-            "VO:0004321"
-          ],
-          "slot_uri": "VO:0005678",
-          "alias": "Vaccine_Antigen_Mapping",
           "owner": "BrucellaVaccineSchema",
           "domain_of": [
             "BrucellaVaccineSchema"
@@ -835,11 +892,167 @@
           "slot_group": "Annotation Data",
           "range": "string"
         },
-        "Gene": {
-          "name": "Gene",
+        "Vaccine Protocol": {
+          "name": "Vaccine Protocol",
+          "description": "Protocol details for the vaccine",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Vaccine_Protocol",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Experiment Information",
+          "range": "string"
+        },
+        "Results": {
+          "name": "Results",
+          "description": "Results of the vaccine study",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Results",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Experiment Information",
+          "range": "string"
+        },
+        "Immune Response": {
+          "name": "Immune Response",
+          "description": "Immune response observed in the study",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Immune_Response",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Experiment Information",
+          "range": "string"
+        },
+        "Efficacy": {
+          "name": "Efficacy",
+          "description": "Efficacy of the vaccine after challenge protocol",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Efficacy",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Experiment Information",
+          "range": "string"
+        },
+        "Gene1": {
+          "name": "Gene1",
           "description": "Gene with ID if available",
           "from_schema": "https://example.com/BrucellaVaccineSchema",
-          "alias": "Gene",
+          "alias": "Gene1",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Mapped GeneID1": {
+          "name": "Mapped GeneID1",
+          "description": "Mapped Gene ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Mapped_GeneID1",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Gene2": {
+          "name": "Gene2",
+          "description": "Gene with ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Gene2",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Mapped GeneID2": {
+          "name": "Mapped GeneID2",
+          "description": "Mapped Gene ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Mapped_GeneID2",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Gene3": {
+          "name": "Gene3",
+          "description": "Gene with ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Gene3",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Mapped GeneID3": {
+          "name": "Mapped GeneID3",
+          "description": "Mapped Gene ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Mapped_GeneID3",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Gene4": {
+          "name": "Gene4",
+          "description": "Gene with ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Gene4",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Mapped GeneID4": {
+          "name": "Mapped GeneID4",
+          "description": "Mapped Gene ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Mapped_GeneID4",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Gene5": {
+          "name": "Gene5",
+          "description": "Gene with ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Gene5",
+          "owner": "BrucellaVaccineSchema",
+          "domain_of": [
+            "BrucellaVaccineSchema"
+          ],
+          "slot_group": "Annotation Data",
+          "range": "string"
+        },
+        "Mapped GeneID5": {
+          "name": "Mapped GeneID5",
+          "description": "Mapped Gene ID if available",
+          "from_schema": "https://example.com/BrucellaVaccineSchema",
+          "alias": "Mapped_GeneID5",
           "owner": "BrucellaVaccineSchema",
           "domain_of": [
             "BrucellaVaccineSchema"
